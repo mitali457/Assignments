@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 
 void main() => runApp(MyApp());
@@ -49,6 +51,7 @@ class _MyHomePageState extends State<MyHomePage> {
               child: Center(
                 child: Text(
                   'KEEP SMILING ALWAYS',
+                style: TextStyle(color: Colors.white),
                   textAlign: TextAlign.center,
                 ),
               ),
@@ -68,7 +71,7 @@ class _MyHomePageState extends State<MyHomePage> {
             Container(
                 margin: EdgeInsets.all(10),
                 width: 370,
-                height: 120,
+                height: 100,
                 color: Colors.white,
                 child: Column(
                   children: <Widget>[
@@ -117,29 +120,29 @@ class _MyHomePageState extends State<MyHomePage> {
                     children: <Widget>[
                      Container(
                        margin: EdgeInsets.all(10),
-                       width: 390,
-                       height: 400,
+                       width: 300,
+                       height: 260,
                        color: Colors.white,
                        child: Column(
                   children: <Widget>[
                     Row(children: <Widget>[
                       Container(
                         alignment: Alignment.topLeft,
-                        width: 90,
+                        width: 100,
                         height: 85,
                         color: Colors.indigo,
                       ),
                       Container(
                         alignment: Alignment.topCenter,
-                        width: 200,
+                        width: 90,
                         height: 85,
                         color: Colors.pink,
                       ),
                       Container(
                         alignment: Alignment.topRight,
-                        width: 100,
+                        width: 106,
                         height: 85,
-                        color: Colors.blue,
+                        color: Colors.deepPurple,
                       ),
                       
                     ]
@@ -147,21 +150,21 @@ class _MyHomePageState extends State<MyHomePage> {
                        Row(children: <Widget>[
                       Container(
                         alignment: Alignment.topLeft,
-                        width: 200,
-                        height: 200,
+                        width:70,
+                        height: 74,
                         color: Colors.green,
                       ),
                       Container(
                         alignment: Alignment.topCenter,
-                        width: 90,
-                        height: 200,
+                        width: 70,
+                        height: 70,
                         color: Colors.blue,
                       ),
                       Container(
                         alignment: Alignment.topRight,
-                        width: 100,
-                        height: 200,
-                        color: Colors.pink,
+                        width: 160,
+                        height: 70,
+                        color: Colors.yellow,
                       ),
                       
                     ]
@@ -175,24 +178,45 @@ class _MyHomePageState extends State<MyHomePage> {
                       ),
                       Container(
                         alignment: Alignment.topCenter,
-                        width: 150,
+                        width: 110,
                         height: 100,
                         color: Colors.purple,
                       ),
                       Container(
                         alignment: Alignment.topRight,
-                        width: 140,
+                        width: 90,
                         height: 100,
                         color: Colors.orange,
                       ),
+                      
                       
                     ]
                       )
         ],
       )
       ),
-                    ]
-                              )
+               ]
+                              ),
+                              Row(children: <Widget>[
+                                Container(
+            padding: EdgeInsets.only(top: 10, left: 10),
+            constraints: BoxConstraints.expand(height: 100, width: 100),
+            color:Colors.purple ,
+            child: Text("this.transform",style: TextStyle(color: Colors.white,fontSize: 15, fontWeight: FontWeight.bold),),
+          ),
+      Container(
+            padding: EdgeInsets.only(top: 10, left: 10),
+            constraints: BoxConstraints.expand(width: 70, height: 100),
+            color: Colors.purple,
+            transform: Matrix4.rotationY(pi / 4)..rotateX(pi / 4),
+            child: Text("this.transform",
+            style: TextStyle(color: Colors.white,fontSize: 15, fontWeight: FontWeight.bold),
+            )
+      
+          )
+                             ]
+               )
+
         ]))
     );
   }
