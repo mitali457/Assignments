@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:rainbow_gradient/rainbow_gradient.dart';
 
 void main() {
   runApp(MyApp(
@@ -18,6 +17,8 @@ class MyApp extends StatelessWidget {
   }
 }
 
+
+
 class MyHomePage extends StatefulWidget {
   @override
   _MyHomePageState createState() => _MyHomePageState();
@@ -30,7 +31,7 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.purpleAccent,
-        title: Text('Rainbow'),
+        title: Text('Rainbow',style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold),),
       ),
       body: SingleChildScrollView(
           child: Stack(
@@ -59,7 +60,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   margin: EdgeInsets.only(top: 9),
                   child: FlatButton(
                       color: Colors.red,
-                      child: Text('Red',style: TextStyle(fontSize: 14,fontWeight: FontWeight.bold),),
+                      child: Text('Red',style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
                       onPressed: () {
                         setState(() {
                           containerback = Colors.red;
@@ -72,7 +73,7 @@ class _MyHomePageState extends State<MyHomePage> {
                    margin: EdgeInsets.only(top: 9),
                   child: FlatButton(
                       color: Colors.orange,
-                      child: Text('Orange',style: TextStyle(fontSize: 14,fontWeight: FontWeight.bold),),
+                      child: Text('Orange',style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
                       onPressed: () {
                         setState(() {
                           containerback = Colors.orange;
@@ -85,7 +86,7 @@ class _MyHomePageState extends State<MyHomePage> {
                    margin: EdgeInsets.only(top: 9),
                   child: FlatButton(
                       color: Colors.yellow,
-                      child: Text("Yellow",style: TextStyle(fontSize: 14,fontWeight: FontWeight.bold),),
+                      child: Text("Yellow",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
                       onPressed: () {
                         setState(() {
                           containerback = Colors.yellow;
@@ -98,7 +99,7 @@ class _MyHomePageState extends State<MyHomePage> {
                    margin: EdgeInsets.only(top: 9),
                   child: FlatButton(
                       color: Colors.green,
-                      child: Text("Green",style: TextStyle(fontSize: 14,fontWeight: FontWeight.bold),),
+                      child: Text("Green",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
                       onPressed: () {
                         setState(() {
                           containerback = Colors.green;
@@ -111,7 +112,7 @@ class _MyHomePageState extends State<MyHomePage> {
                    margin: EdgeInsets.only(top: 9),
                   child: FlatButton(
                       color: Colors.blue,
-                      child: Text("Blue",style: TextStyle(fontSize: 14,fontWeight: FontWeight.bold),),
+                      child: Text("Blue",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
                       onPressed: () {
                         setState(() {
                           containerback = Colors.blue;
@@ -124,7 +125,7 @@ class _MyHomePageState extends State<MyHomePage> {
                    margin: EdgeInsets.only(top:9),
                   child: FlatButton(
                       color: Colors.indigo,
-                      child: Text("Indigo",style: TextStyle(fontSize: 14,fontWeight: FontWeight.bold),),
+                      child: Text("Indigo",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
                       onPressed: () {
                         setState(() {
                           containerback = Colors.indigo;
@@ -137,7 +138,7 @@ class _MyHomePageState extends State<MyHomePage> {
                    margin: EdgeInsets.only(top:9),
                   child: FlatButton(
                       color: Color(0xff302c9c),
-                      child: Text("Violet",style: TextStyle(fontSize: 14,fontWeight: FontWeight.bold),),
+                      child: Text("Violet",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
                       onPressed: () {
                         setState(() {
                           containerback = Color(0xff302c9c);
