@@ -17,8 +17,6 @@ class MyApp extends StatelessWidget {
   }
 }
 
-
-
 class MyHomePage extends StatefulWidget {
   @override
   _MyHomePageState createState() => _MyHomePageState();
@@ -26,12 +24,44 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   Color containerback = Colors.cyan;
+  void colorchanging(var color){
+    setState(() {
+      switch (color) {
+        case 'Red':
+        containerback = Colors.red;
+        break;
+        case 'Orange':
+        containerback = Colors.orange;
+        break;
+        case 'Yellow':
+        containerback = Colors.yellow;
+        break;
+        case 'Green':
+        containerback = Colors.green;
+        break;
+        case 'Blue':
+        containerback = Colors.blue;
+        break;
+        case 'Indigo':
+        containerback = Colors.indigo;
+        break;
+        case 'Violet':
+        containerback = Color(0xff302c9c);
+        break;
+        default:
+        containerback = Colors.blueGrey;
+      }
+    });
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.purpleAccent,
-        title: Text('Rainbow',style: TextStyle(fontSize: 25,fontWeight: FontWeight.bold),),
+        title: Text(
+          'Rainbow',
+          style: TextStyle(fontSize: 25, fontWeight: FontWeight.bold),
+        ),
       ),
       body: SingleChildScrollView(
           child: Stack(
@@ -60,89 +90,104 @@ class _MyHomePageState extends State<MyHomePage> {
                   margin: EdgeInsets.only(top: 9),
                   child: FlatButton(
                       color: Colors.red,
-                      child: Text('Red',style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
+                      child: Text(
+                        'Red',
+                        style: TextStyle(
+                            fontSize: 20, fontWeight: FontWeight.bold),
+                      ),
                       onPressed: () {
-                        setState(() {
-                          containerback = Colors.red;
-                        });
+                       colorchanging("Red");
                       }),
                 ),
                 Container(
                   width: 350,
                   height: 40,
-                   margin: EdgeInsets.only(top: 9),
+                  margin: EdgeInsets.only(top: 9),
                   child: FlatButton(
                       color: Colors.orange,
-                      child: Text('Orange',style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
+                      child: Text(
+                        'Orange',
+                        style: TextStyle(
+                            fontSize: 20, fontWeight: FontWeight.bold),
+                      ),
                       onPressed: () {
-                        setState(() {
-                          containerback = Colors.orange;
-                        });
+                        colorchanging("Orange");
                       }),
                 ),
                 Container(
                   width: 350,
                   height: 40,
-                   margin: EdgeInsets.only(top: 9),
+                  margin: EdgeInsets.only(top: 9),
                   child: FlatButton(
                       color: Colors.yellow,
-                      child: Text("Yellow",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
+                      child: Text(
+                        "Yellow",
+                        style: TextStyle(  
+                            fontSize: 20, fontWeight: FontWeight.bold),
+                      ),
                       onPressed: () {
-                        setState(() {
-                          containerback = Colors.yellow;
-                        });
+                        colorchanging("Yellow");
                       }),
                 ),
                 Container(
                   width: 350,
                   height: 40,
-                   margin: EdgeInsets.only(top: 9),
+                  margin: EdgeInsets.only(top: 9),
                   child: FlatButton(
                       color: Colors.green,
-                      child: Text("Green",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
+                      child: Text(
+                        "Green",
+                        style: TextStyle(
+                            fontSize: 20, fontWeight: FontWeight.bold),
+                      ),
                       onPressed: () {
-                        setState(() {
-                          containerback = Colors.green;
-                        });
+                        colorchanging("Green");
                       }),
                 ),
                 Container(
                   width: 350,
                   height: 40,
-                   margin: EdgeInsets.only(top: 9),
+                  margin: EdgeInsets.only(top: 9),
                   child: FlatButton(
                       color: Colors.blue,
-                      child: Text("Blue",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
+                      child: Text(
+                        "Blue",
+                        style: TextStyle(
+                            fontSize: 20, fontWeight: FontWeight.bold),
+                      ),
                       onPressed: () {
-                        setState(() {
-                          containerback = Colors.blue;
-                        });
+                        colorchanging("Blue");
                       }),
                 ),
                 Container(
                   width: 350,
                   height: 40,
-                   margin: EdgeInsets.only(top:9),
+                  margin: EdgeInsets.only(top: 9),
                   child: FlatButton(
                       color: Colors.indigo,
-                      child: Text("Indigo",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
+                      child: Text(
+                        "Indigo",
+                        style: TextStyle(
+                            fontSize: 20, fontWeight: FontWeight.bold),
+                      ),
                       onPressed: () {
-                        setState(() {
-                          containerback = Colors.indigo;
-                        });
+                        colorchanging("Indigo");
+                        
                       }),
                 ),
                 Container(
                   width: 350,
                   height: 40,
-                   margin: EdgeInsets.only(top:9),
+                  margin: EdgeInsets.only(top: 9),
                   child: FlatButton(
                       color: Color(0xff302c9c),
-                      child: Text("Violet",style: TextStyle(fontSize: 20,fontWeight: FontWeight.bold),),
+                      child: Text(
+                        "Violet",
+                        style: TextStyle(
+                            fontSize: 20, fontWeight: FontWeight.bold),
+                      ),
                       onPressed: () {
-                        setState(() {
-                          containerback = Color(0xff302c9c);
-                        });
+                      colorchanging("Vialet");
                       }),
                 ),
               ],
