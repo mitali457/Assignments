@@ -34,35 +34,26 @@ class _LoginState extends State<Login> {
   }
 
   void message() {
-if(_name==_password)
-    showDialog(
-        context: context,
-        builder: (BuildContext context) {
-          return AlertDialog(
-            title: Text('Login'),
-            content: Text("You Login successfully!!"),
-          );
-
-          
-        }
-       
-        );
-        else{
-          showDialog(
-        context: context,
-        builder: (BuildContext context) {
-          return AlertDialog(
-            title: Text('Login'),
-            content:Text("You Login Error!!"),
-          );
-
-          
-        }
-       
-        );
-
-}
-    //});
+    if (_name == _password)
+      showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return AlertDialog(
+              title: Text('Login'),
+              content: Text("You Login successfully!!"),
+            );
+          });
+    else {
+      showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return AlertDialog(
+              title: Text('Login'),
+              content: Text("You Put Wrong Password!! Please Register Your Account"),
+              
+            );
+          });
+    }
   }
 
   @override
@@ -104,8 +95,7 @@ if(_name==_password)
                 Padding(
                   padding: EdgeInsets.only(top: 25, left: 15, right: 15),
                   child: TextField(
-                                        onChanged:_nameListen ,
-
+                    onChanged: _nameListen,
                     controller: _nameFilter,
                     keyboardType: TextInputType.text,
                     inputFormatters: <TextInputFormatter>[
@@ -120,8 +110,7 @@ if(_name==_password)
                 Padding(
                   padding: EdgeInsets.only(top: 25, left: 15, right: 15),
                   child: TextField(
-
-                    onChanged:_passwordListen ,
+                    onChanged: _passwordListen,
                     controller: _passwordFilter,
                     obscureText: true,
                     decoration: InputDecoration(
