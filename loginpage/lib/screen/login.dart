@@ -95,7 +95,7 @@ class _LoginState extends State<Login> {
                 Padding(
                   padding: EdgeInsets.only(top: 25, left: 15, right: 15),
                   child: TextField(
-                    onChanged: _nameListen,
+                   // onChanged: _nameListen,
                     controller: _nameFilter,
                     keyboardType: TextInputType.text,
                     inputFormatters: <TextInputFormatter>[
@@ -110,7 +110,7 @@ class _LoginState extends State<Login> {
                 Padding(
                   padding: EdgeInsets.only(top: 25, left: 15, right: 15),
                   child: TextField(
-                    onChanged: _passwordListen,
+                   // onChanged: _passwordListen,
                     controller: _passwordFilter,
                     obscureText: true,
                     decoration: InputDecoration(
