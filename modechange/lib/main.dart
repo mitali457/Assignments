@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-void main() => runApp(MyApp());
+void main() => runApp(Modechange());
 
-class MyApp extends StatelessWidget {
+class Modechange extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -14,101 +14,127 @@ class MyApp extends StatelessWidget {
 
 class MyHomepage extends StatefulWidget {
   @override
-  _MyHomepagestate createState() => _MyHomepagestate();
+  MyHomepagestate createState() => MyHomepagestate();
 }
 
-class _MyHomepagestate extends State<MyHomepage> {
-  Text day = Text(
-    'Change to Night Mode',
-    textAlign: TextAlign.center,
-    style: TextStyle(
-        fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white),
-  );
-  Text night = Text(
-    'Change to Day Mode',
-    textAlign: TextAlign.center,
-    style: TextStyle(
-        fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white),
-  );
+class MyHomepagestate extends State<MyHomepage> {
+  String day = 'Change to Night Mode';
+  String night = 'Change to Day Mode';
+  Color dayappbg = Colors.orangeAccent;
 
-  Color dayappbg = Colors.orange[800];
+  Color daybg = Colors.yellow;
 
-  Color nightappbg = Colors.deepPurple[900];
-  Color daybg = Colors.orange[200];
-  Color nightbg = Colors.deepPurpleAccent[800];
   AssetImage dayimage = AssetImage('assets/sun.png');
-  AssetImage nightimage = AssetImage('assets/moon.jpeg');
-  Text daystate = Text(
-    'Good Morning!!!',
-    textAlign: TextAlign.center,
-    style: TextStyle(
-        fontSize: 20, fontWeight: FontWeight.bold, color: Colors.yellow[800]),
-  );
-  Text nightstate = Text(
-    'Good Night!!!',
-    textAlign: TextAlign.center,
-    style: TextStyle(
-        fontSize: 20, fontWeight: FontWeight.bold, color: Colors.white),
-  );
+  //AssetImage nightimage = AssetImage('assets/moon.jpeg');
 
-  @override
+  String daystate = 'Good Morning !!';
+  String nightstate = 'Good Night !!';
+  List<bool> isSelected = [true, false];
   Widget build(BuildContext context) {
-    return SafeArea(
-        child: Scaffold(
+    return Scaffold(
       backgroundColor: daybg,
       appBar: AppBar(
-        title: Center(
-          child: day,
-        ),
         backgroundColor: dayappbg,
+        title: Center(
+            child: Text(
+          day,
+          textAlign: TextAlign.center,
+          style: TextStyle(fontSize: 20, color: Colors.white),
+        )),
       ),
-      /*body: Center(
-        child: Column(
-            mainAxisAlignment: MainAxisAlignment.start,
+      body: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: <Widget>[
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              Row(
-                children: <Widget>[
-                  Container(
-                    child: Padding(
-                      padding: EdgeInsets.only(left: 15, right: 15.0),
-                      child: RaisedButton(
-                        textColor: Colors.white,
-                        color: Colors.black,
-                        child: Text("Search"),
-                        onPressed: () {},
-                        shape: new RoundedRectangleBorder(
-                          borderRadius: new BorderRadius.circular(30.0),
-                        ),
-                      ),
-                    ),
-                  ),
-                ],
+              Padding(
+                padding: EdgeInsets.only(top: 10),
+                child: ToggleButtons(
+                  selectedBorderColor: Colors.black,
+                  selectedColor: Colors.blueGrey,
+                  color: Colors.white,
+                  borderRadius: BorderRadius.circular(50),
+                  borderWidth: 2,
+                  borderColor: Colors.grey,
+                  children: <Widget>[
+                    Icon(Icons.signal_cellular_no_sim),
+                    Icon(
+                      Icons.signal_cellular_no_sim,
+                      color: Colors.black,
+                    )
+                  ],
+                  isSelected: isSelected,
+                  onPressed: (int index) {
+                    setState(() {
+                      for (int buttonIndex = 0;
+                          buttonIndex < isSelected.length;
+                          buttonIndex++) {
+                        if (buttonIndex == index) {
+                          isSelected[buttonIndex] = !isSelected[buttonIndex];
+                          dayappbg = Colors.indigo;
+                          Text(
+                            night,
+                            textAlign: TextAlign.center,
+                            style: TextStyle(fontSize: 30, color: Colors.black),
+                          );
+                          dayimage = AssetImage('assets/moon.jpeg');
+                          daybg = Colors.indigo;
+                          Text(
+                            nightstate,
+                            textAlign: TextAlign.center,
+                            style: TextStyle(fontSize: 30, color: Colors.black),
+                          );
+                        } else {
+                          isSelected[buttonIndex] = false;
+                          Text(
+                            day,
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                                fontSize: 20,
+                                fontWeight: FontWeight.bold,
+                                color: Colors.white),
+                          );
+                          dayappbg = Colors.orangeAccent;
+                          dayimage = AssetImage('assets/sun.png');
+                          daybg = Colors.yellow;
+                          Text(
+                            daystate,
+                            textAlign: TextAlign.center,
+                            style: TextStyle(fontSize: 30, color: Colors.black),
+                          );
+                        }
+                      }
+                    });
+                  },
+                ),
               ),
-            ]),
-      ),*/
-    ))
-
-    Column(
-      crossAxisAlignment: CrossAxisAlignment.center,
-      children: <Widget>[
-        Container(
-          alignment: Alignment.topCenter,
-          margin: EdgeInsets.all(20),
-          width: 150,
-          height: 150,
-          decoration: BoxDecoration(
-            image: DecorationImage(
-              image: dayimage,
-              fit: BoxFit.cover,
-            ),
+            ],
           ),
-        ),
-        Center(
-          child: daystate,
-        )
-      ],
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: <Widget>[
+              Container(
+                alignment: Alignment.topCenter,
+                margin: EdgeInsets.all(20),
+                width: 150,
+                height: 150,
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                    image: dayimage,
+                    fit: BoxFit.cover,
+                  ),
+                ),
+              ),
+            ],
+          ),
+          Text(
+            daystate,
+            textAlign: TextAlign.center,
+            style: TextStyle(fontSize: 30, color: Colors.black),
+          )
+        ],
+      ),
     );
   }
 }
-
-
