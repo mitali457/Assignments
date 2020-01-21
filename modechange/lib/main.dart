@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 
 void main() => runApp(Modechange());
@@ -48,7 +49,8 @@ class MyHomepagestate extends State<MyHomepage> {
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
-              Padding(
+              Switch(value: isSelected[1],
+              /*Padding(
                 padding: EdgeInsets.only(top: 10),
                 child: ToggleButtons(
                   selectedBorderColor: Colors.black,
@@ -64,13 +66,14 @@ class MyHomepagestate extends State<MyHomepage> {
                       color: Colors.black,
                     )
                   ],
-                  isSelected: isSelected,
-                  onPressed: (int index) {
+                  isSelected: isSelected,*/
+                  onChanged: (bool value) {
                     setState(() {
                       for (int buttonIndex = 0;
                           buttonIndex < isSelected.length;
                           buttonIndex++) {
-                        if (buttonIndex == index) {
+                        if (value==true) 
+                        {
                           isSelected[buttonIndex] = !isSelected[buttonIndex];
                           dayappbg = Colors.indigo;
                           Text(
@@ -85,7 +88,9 @@ class MyHomepagestate extends State<MyHomepage> {
                             textAlign: TextAlign.center,
                             style: TextStyle(fontSize: 30, color: Colors.black),
                           );
-                        } else {
+                        } 
+                        else 
+                        {
                           isSelected[buttonIndex] = false;
                           Text(
                             day,
@@ -108,7 +113,6 @@ class MyHomepagestate extends State<MyHomepage> {
                     });
                   },
                 ),
-              ),
             ],
           ),
           Row(
