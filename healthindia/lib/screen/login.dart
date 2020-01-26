@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:healthindia/screen/bmi.dart';
+import 'package:healthindia/screen/calorie.dart';
 import 'package:healthindia/screen/homescreen.dart';
 import 'package:healthindia/screen/registration.dart';
 
@@ -71,6 +73,95 @@ class _LoginState extends State<Login> {
              
           ]
         ),
+        drawer: Drawer(
+        child: ListView(padding: EdgeInsets.zero, children: <Widget>[
+          UserAccountsDrawerHeader(
+            decoration: BoxDecoration(color: Colors.green.withRed(10)),
+            accountName: Text(
+              "Mitali Mondal",
+              style: TextStyle(
+                  color: Colors.indigo,
+                  fontStyle: FontStyle.italic,
+                  fontSize: 20),
+            ),
+            accountEmail: Text(
+              "mitalimondal450@gmail.com",
+              style: TextStyle(
+                  color: Colors.indigo,
+                  fontStyle: FontStyle.italic,
+                  fontSize: 20),
+            ),
+            currentAccountPicture: CircleAvatar(
+              backgroundColor: Theme.of(context).platform == TargetPlatform.iOS
+                  ? Colors.brown
+                  : Colors.white,
+              child: Text(
+                "M",
+                style: TextStyle(
+                    color: Colors.indigo,
+                    fontSize: 50.0,
+                    fontStyle: FontStyle.italic),
+              ),
+            ),
+          ),
+          ListTile(
+            title: Text(
+              'Home',
+              style: TextStyle(
+                  color: Colors.brown,
+                  fontStyle: FontStyle.italic,
+                  fontSize: 20),
+            ),
+            trailing: Icon(Icons.arrow_forward, color: Colors.brown),
+            onTap: () {
+              Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => HomeScreen()));
+            },
+          ),
+          ListTile(
+            title: Text(
+              'BMI Calculator',
+              style: TextStyle(
+                  color: Colors.brown,
+                  fontStyle: FontStyle.italic,
+                  fontSize: 20),
+            ),
+            trailing: Icon(Icons.arrow_forward, color: Colors.brown),
+            onTap: () {
+              Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => Bmical()));
+            },
+          ),
+          ListTile(
+            title: Text(
+              'Calorie Calculator',
+              style: TextStyle(
+                  color: Colors.brown,
+                  fontStyle: FontStyle.italic,
+                  fontSize: 20),
+            ),
+            trailing: Icon(Icons.arrow_forward, color: Colors.brown),
+            onTap: () {
+              Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => Calorie()));
+            },
+          ),
+          ListTile(
+            title: Text(
+              'Settings',
+              style: TextStyle(
+                  color: Colors.brown,
+                  fontStyle: FontStyle.italic,
+                  fontSize: 20),
+            ),
+            trailing: Icon(
+              Icons.arrow_forward,
+              color: Colors.brown,
+            ),
+            onTap: () {},
+          ),
+        ]),
+      ),
            body: SingleChildScrollView(
           child: Stack(
             children: <Widget>[

@@ -23,7 +23,7 @@ class MyHomepagestate extends State<MyHomepage> {
   String night = 'Change to Day Mode';
   Color dayappbg = Colors.orangeAccent;
 
-  Color daybg = Colors.yellow;
+  Color daybg = Colors.yellow[300];
 
   AssetImage dayimage = AssetImage('assets/sun.png');
   //AssetImage nightimage = AssetImage('assets/moon.jpeg');
@@ -76,38 +76,20 @@ class MyHomepagestate extends State<MyHomepage> {
                         {
                           isSelected[buttonIndex] = !isSelected[buttonIndex];
                           dayappbg = Colors.indigo;
-                          Text(
-                            night,
-                            textAlign: TextAlign.center,
-                            style: TextStyle(fontSize: 30, color: Colors.black),
-                          );
-                          dayimage = AssetImage('assets/moon.jpeg');
-                          daybg = Colors.indigo;
-                          Text(
-                            nightstate,
-                            textAlign: TextAlign.center,
-                            style: TextStyle(fontSize: 30, color: Colors.black),
-                          );
+                          day=night;
+                           dayimage = AssetImage('assets/moon.png');
+                          daybg = Colors.deepPurple[800];
+                          daystate = nightstate;
                         } 
                         else 
                         {
                           isSelected[buttonIndex] = false;
-                          Text(
-                            day,
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                                fontSize: 20,
-                                fontWeight: FontWeight.bold,
-                                color: Colors.white),
-                          );
-                          dayappbg = Colors.orangeAccent;
-                          dayimage = AssetImage('assets/sun.png');
-                          daybg = Colors.yellow;
-                          Text(
-                            daystate,
-                            textAlign: TextAlign.center,
-                            style: TextStyle(fontSize: 30, color: Colors.black),
-                          );
+                          day = day;
+                          dayappbg = Colors.yellow[800];
+                          dayimage = AssetImage('assets/day.png');
+                          daybg = Colors.yellow[700];
+                          daystate = daystate;
+                 
                         }
                       }
                     });
@@ -121,12 +103,12 @@ class MyHomepagestate extends State<MyHomepage> {
               Container(
                 alignment: Alignment.topCenter,
                 margin: EdgeInsets.all(20),
-                width: 150,
-                height: 150,
+                width: 374,
+                height: 350,
                 decoration: BoxDecoration(
                   image: DecorationImage(
                     image: dayimage,
-                    fit: BoxFit.cover,
+                    fit: BoxFit.fill,
                   ),
                 ),
               ),

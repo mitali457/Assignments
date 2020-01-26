@@ -1,80 +1,121 @@
 import 'package:flutter/material.dart';
 import 'package:healthindia/screen/registration.dart';
 import 'package:healthindia/screen/calorie.dart';
-import 'package:healthindia/screen/Heartbeat.dart';
-import 'package:healthindia/screen/MoodTrack.dart';
-import 'package:healthindia/screen/bmi.dart';
 
+import 'package:healthindia/screen/bmi.dart';
 
 import '../Moodtrack.dart';
 //import 'login.dart';
 
 class HomeScreen extends StatelessWidget {
+  final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
+
   @override
   Widget build(BuildContext context) {
-    
     return Scaffold(
-      
+      key: _scaffoldKey,
       backgroundColor: Colors.white,
-      body:Container(
+      body: Container(
         decoration: BoxDecoration(
-      gradient: SweepGradient(
-        colors: [Colors.blueGrey, Colors.green, Colors.teal, Colors.brown, Colors.blueGrey],
-        stops: [0.0, 0.25, 0.5, 0.75, 1],
-        startAngle: 0.5,
-        endAngle: 1
-      ),
-      ),
-      ),
-      
-    
-      appBar: AppBar(
-        title: Text(
-          " Welcome to Healthy India ",
-          style: TextStyle(
-              fontStyle: FontStyle.italic, fontSize: 25, color: Colors.black),
+          gradient: SweepGradient(colors: [
+            Colors.white,
+            Colors.green,
+            Colors.orange,
+            Colors.red,
+            Colors.white
+          ], stops: [
+            0.0,
+            0.25,
+            0.5,
+            0.75,
+            1
+          ], startAngle: 0.5, endAngle: 1),
         ),
-        
-        backgroundColor: Colors.brown,
       ),
-        
-      
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(260.0),
+        child: AppBar(
+          automaticallyImplyLeading: false,
+          leading: IconButton(
+            icon: Icon(
+              Icons.menu,
+            ),
+            onPressed: () {
+              _scaffoldKey.currentState.openDrawer();
+            },
+            color: Colors.brown,
+          ),
+          flexibleSpace: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              //
+              Image.network(
+                'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT48B0d3CuYfEszqV9vPDiz4V19duTXYtI5X2EL6r4IOc5ARvvdtA&s',
+                fit: BoxFit.contain,
+                width: 300,
+                height: 460,
+              ),
+            ],
+          ),
+          elevation: 0.0,
+          backgroundColor: Colors.white,
+          brightness: Brightness.light,
+        ),
+      ),
       drawer: Drawer(
-        
         child: ListView(padding: EdgeInsets.zero, children: <Widget>[
           UserAccountsDrawerHeader(
+            decoration: BoxDecoration(color: Colors.green.withRed(10)),
             accountName: Text(
               "Mitali Mondal",
-              style: TextStyle(fontStyle: FontStyle.italic, fontSize: 20),
+              style: TextStyle(
+                  color: Colors.indigo,
+                  fontStyle: FontStyle.italic,
+                  fontSize: 20),
             ),
             accountEmail: Text(
               "mitalimondal450@gmail.com",
-              style: TextStyle(fontStyle: FontStyle.italic, fontSize: 20),
+              style: TextStyle(
+                  color: Colors.indigo,
+                  fontStyle: FontStyle.italic,
+                  fontSize: 20),
             ),
             currentAccountPicture: CircleAvatar(
               backgroundColor: Theme.of(context).platform == TargetPlatform.iOS
-                  ? Colors.blue
+                  ? Colors.brown
                   : Colors.white,
               child: Text(
                 "M",
-                style: TextStyle(fontSize: 50.0, fontStyle: FontStyle.italic),
+                style: TextStyle(
+                    color: Colors.indigo,
+                    fontSize: 50.0,
+                    fontStyle: FontStyle.italic),
               ),
             ),
           ),
           ListTile(
             title: Text(
-              'Notification',
-              style: TextStyle(fontStyle: FontStyle.italic, fontSize: 20),
+              'Home',
+              style: TextStyle(
+                  color: Colors.brown,
+                  fontStyle: FontStyle.italic,
+                  fontSize: 20),
             ),
-            trailing: Icon(Icons.arrow_forward),
-            onTap: () {},
+            trailing: Icon(Icons.arrow_forward, color: Colors.brown),
+            onTap: () {
+              Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => HomeScreen()));
+            },
           ),
           ListTile(
             title: Text(
               'BMI Calculator',
-              style: TextStyle(fontStyle: FontStyle.italic, fontSize: 20),
+              style: TextStyle(
+                  color: Colors.brown,
+                  fontStyle: FontStyle.italic,
+                  fontSize: 20),
             ),
-            trailing: Icon(Icons.arrow_forward),
+            trailing: Icon(Icons.arrow_forward, color: Colors.brown),
             onTap: () {
               Navigator.push(
                   context, MaterialPageRoute(builder: (context) => Bmical()));
@@ -83,9 +124,12 @@ class HomeScreen extends StatelessWidget {
           ListTile(
             title: Text(
               'Calorie Calculator',
-              style: TextStyle(fontStyle: FontStyle.italic, fontSize: 20),
+              style: TextStyle(
+                  color: Colors.brown,
+                  fontStyle: FontStyle.italic,
+                  fontSize: 20),
             ),
-            trailing: Icon(Icons.arrow_forward),
+            trailing: Icon(Icons.arrow_forward, color: Colors.brown),
             onTap: () {
               Navigator.push(
                   context, MaterialPageRoute(builder: (context) => Calorie()));
@@ -93,29 +137,21 @@ class HomeScreen extends StatelessWidget {
           ),
           ListTile(
             title: Text(
-              'Heartbeat Calculator',
-              style: TextStyle(fontStyle: FontStyle.italic, fontSize: 20),
+              'Settings',
+              style: TextStyle(
+                  color: Colors.brown,
+                  fontStyle: FontStyle.italic,
+                  fontSize: 20),
             ),
-            trailing: Icon(Icons.arrow_forward),
-            onTap: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => Heartbeat()));
-            },
-          ),
-          ListTile(
-            title: Text(
-              'MoodTracker',
-              style: TextStyle(fontStyle: FontStyle.italic, fontSize: 20),
+            trailing: Icon(
+              Icons.arrow_forward,
+              color: Colors.brown,
             ),
-            trailing: Icon(Icons.arrow_forward),
-            onTap: () {
-              Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => Moodtrack()));
-            },
+            onTap: () {},
           ),
         ]),
       ),
-     /* body: Center(
+      /* body: Center(
         child: Column(mainAxisAlignment: MainAxisAlignment.center, children: <
             Widget>[
           Row(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
@@ -148,7 +184,6 @@ class HomeScreen extends StatelessWidget {
         backgroundColor: Colors.teal,
         onPressed: (){},
       ),*/
-      
     );
   }
 }
