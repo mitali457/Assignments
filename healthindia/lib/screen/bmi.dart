@@ -3,6 +3,7 @@ import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:healthindia/screen/calorie.dart';
 import 'package:healthindia/screen/homescreen.dart';
+import 'package:healthindia/screen/login.dart';
 
 class Bmical extends StatefulWidget {
   @override
@@ -10,6 +11,7 @@ class Bmical extends StatefulWidget {
 }
 
 class _CalculatorState extends State<Bmical> {
+  final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
   TextEditingController heightcontrol = TextEditingController();
   TextEditingController weightcontrol = TextEditingController();
   String bmistate = '';
@@ -45,12 +47,22 @@ class _CalculatorState extends State<Bmical> {
        return MaterialApp(
       home: SafeArea(
       child: Scaffold(
+        key: _scaffoldKey,
         backgroundColor: Colors.white,
         appBar: PreferredSize(
         preferredSize: Size.fromHeight(260.0),
         child:AppBar(
-          //backgroundColor: Colors.teal,
-          
+  
+          automaticallyImplyLeading: false,
+          leading: IconButton(
+            icon: Icon(
+              Icons.menu,
+            ),
+            onPressed: () {
+              _scaffoldKey.currentState.openDrawer();
+            },
+            color: Colors.indigo,
+          ),
           
         flexibleSpace: Row(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -144,7 +156,7 @@ class _CalculatorState extends State<Bmical> {
           ),
           ListTile(
             title: Text(
-              'Settings',
+              'Logout',
               style: TextStyle(
                   color: Colors.brown,
                   fontStyle: FontStyle.italic,
@@ -154,7 +166,10 @@ class _CalculatorState extends State<Bmical> {
               Icons.arrow_forward,
               color: Colors.brown,
             ),
-            onTap: () {},
+            onTap: () {
+               Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => Login()));
+            },
           ),
         ]),
       ),

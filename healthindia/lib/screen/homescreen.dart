@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:healthindia/screen/login.dart';
 import 'package:healthindia/screen/registration.dart';
 import 'package:healthindia/screen/calorie.dart';
 
@@ -137,7 +138,7 @@ class HomeScreen extends StatelessWidget {
           ),
           ListTile(
             title: Text(
-              'Settings',
+              'Logout',
               style: TextStyle(
                   color: Colors.brown,
                   fontStyle: FontStyle.italic,
@@ -147,24 +148,14 @@ class HomeScreen extends StatelessWidget {
               Icons.arrow_forward,
               color: Colors.brown,
             ),
-            onTap: () {},
+            onTap: () {
+              Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => Login()));
+            },
           ),
         ]),
       ),
-      /* body: Center(
-        child: Column(mainAxisAlignment: MainAxisAlignment.center, children: <
-            Widget>[
-          Row(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
-            Container(
-                width: 230,
-                height: 190,
-                margin: EdgeInsets.only(top: 15, bottom: 10),
-                child: CircleAvatar(
-                  backgroundImage: AssetImage('assets/healthyindia.jpeg'),
-                ))
-          ]),
-        ]),
-      ),*/
+      
       bottomNavigationBar: BottomNavigationBar(
         backgroundColor: Colors.brown,
         items: [
@@ -180,10 +171,7 @@ class HomeScreen extends StatelessWidget {
               icon: Icon(Icons.person), title: Text('Diet Plan'))
         ],
       ),
-      /*floatingActionButton: FloatingActionButton(
-        backgroundColor: Colors.teal,
-        onPressed: (){},
-      ),*/
+      
     );
   }
 }

@@ -19,88 +19,93 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+ 
   int nInt1;
-  int nInt2;
-  double numDouble1;
-  double numDouble2;
+   int nInt2;
+   double numDouble1;
+   double numDouble2;
+  
   String texttodisplay = "";
   String result = '';
   String operation = '';
-  String _radioValue; //Initial definition of radio button value
-
-  btnclikced(String btntext) {
-    if (btntext == 'CLEAR') {
-      texttodisplay = "";
-      result = "";
-      nInt1 = 0;
-      nInt2 = 0;
-      numDouble1 = 0.0;
-      numDouble2 = 0.0;
-    } else if (btntext == "+" ||
-        btntext == "-" ||
-        btntext == "x" ||
-        btntext == "/") {
-      if (_radioValue == 'Int') {
-        nInt1 = int.parse(result);
+  String _radioValue; 
+  
+   btnclikced(String btntext) {
+     if (btntext == 'CLEAR') {
+       texttodisplay = "";
+       result = "";
+       nInt1 = 0;
+       nInt2 = 0;
+       numDouble1 = 0.0;
+       numDouble2 = 0.0;
+     } else if (btntext == "+" ||
+         btntext == "-" ||
+         btntext == "x" ||
+         btntext == "/") {
+       if (_radioValue == 'Int') 
+       {
+         nInt1 = int.parse(result);
+       } else 
+       {
+         numDouble1 = double.parse(result);
+       }
+       result = "";
+       operation = btntext;
+     } else if (btntext == ".") {
+       if (result.contains(".")) {
+         print("Already conatains a decimals");
+         return;
       } else {
-        numDouble1 = double.parse(result);
-      }
-      result = "";
-      operation = btntext;
-    } else if (btntext == ".") {
-      if (result.contains(".")) {
-        print("Already conatains a decimals");
-        return;
-      } else {
-        result = result + btntext;
-      }
+       result = result + btntext;
+     }
     } else if (btntext == "=") {
-      if (_radioValue == 'Int') {
+     if (_radioValue == 'Int') {
         nInt2 = int.parse(result);
-        if (operation == "+") {
+         if (operation == "+") {
           result = (nInt1 + nInt2).toString();
-        }
-        if (operation == "-") {
+         }
+         if (operation == "-") {
           result = (nInt1 - nInt2).toString();
-        }
-        if (operation == "x") {
-          result = (nInt1 * nInt2).toString();
-        }
-        if (operation == "/") {
+       }
+         if (operation == "x") {
+        result = (nInt1 * nInt2).toString();
+      }
+      if (operation == "/") {
           result = (nInt1 ~/ nInt2).toString();
-        }
-        nInt1 = 0;
-        nInt2 = 0;
-        operation = "";
-      } else {
-        numDouble2 = double.parse(result);
-        if (operation == "+") {
-          result = (numDouble1 + numDouble2).toString();
-        }
-        if (operation == "-") {
-          result = (numDouble1 - numDouble2).toString();
-        }
+       }
+       nInt1 = 0;
+       nInt2 = 0;
+      operation = "";
+    }
+      else {
+      numDouble2 = double.parse(result);
+       if (operation == "+") {
+        result = (numDouble1 + numDouble2).toString();
+       }
+       if (operation == "-") {
+        result = (numDouble1 - numDouble2).toString();
+      }
         if (operation == "x") {
           result = (numDouble1 * numDouble2).toString();
-        }
-        if (operation == "/") {
-          result = (numDouble1 ~/ numDouble2).toString();
-        }
-        numDouble1 = 0;
-        numDouble2 = 0;
-        operation = "";
       }
-    } else {
-      if (_radioValue == 'Int') {
-        result = btntext;
+      if (operation == "/") {
+         result = (numDouble1 ~/ numDouble2).toString();
+        }
+       numDouble1 = 0;
+       numDouble2 = 0;
+       operation = "";
+     }
+   } else {
+       if (_radioValue == 'Int') {
+         result = result + btntext;
       } else
-        result = result + btntext;
-    }
+       result = result + btntext;
+   }
 
     setState(() {
       texttodisplay = result;
     });
-  }
+   }
 
   Widget Custombutton(String btnval) {
     return Expanded(
@@ -140,11 +145,6 @@ class _HomePageState extends State<HomePage> {
                 width: 400,
                 height: 590,
               ),
-
-              // Container(
-              // height:10,
-              //Text('\nCalculator',
-              //style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 28),),
             ],
           ),
           elevation: 0.0,
@@ -152,13 +152,26 @@ class _HomePageState extends State<HomePage> {
           brightness: Brightness.light,
         ),
       ),
-      body: Container(
-        //child: Center(
-        //child: Container(
+       body: Container(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.end,
           children: <Widget>[
-            //Expanded(
+            new Container(
+              height: 30,
+              width: 200,
+              padding: EdgeInsets.symmetric(),
+              alignment: Alignment.center,
+              margin: EdgeInsets.only(),
+              color: Colors.blue[40],
+              child: new Text(
+                "$operation ",
+                style: (TextStyle(fontSize: 25, fontWeight: FontWeight.bold)),
+              ),
+            ),
+      Container(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.end,
+          children: <Widget>[
             new Container(
               height: 70,
               width: 200,
@@ -166,14 +179,11 @@ class _HomePageState extends State<HomePage> {
               alignment: Alignment.center,
               margin: EdgeInsets.only(),
               color: Colors.blue[40],
-
-              // height: 200,
               child: new Text(
                 "$result ",
                 style: (TextStyle(fontSize: 25, fontWeight: FontWeight.bold)),
               ),
             ),
-
             Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: <
                 Widget>[
               Row(children: <Widget>[
@@ -202,7 +212,6 @@ class _HomePageState extends State<HomePage> {
                 ],
               ),
             ]),
-
             Row(
               children: <Widget>[
                 Custombutton('9'),
@@ -229,6 +238,7 @@ class _HomePageState extends State<HomePage> {
             ),
             Row(
               children: <Widget>[
+                //Custombutton("."),
                 _radioValue == "Double" ? Custombutton(".") : SizedBox(),
                 Custombutton("0"),
                 Custombutton("±"),
@@ -239,13 +249,14 @@ class _HomePageState extends State<HomePage> {
               children: <Widget>[
                 Custombutton("CLEAR"),
                 Custombutton("="),
-                //Custombutton("Int"),
-                // Custombutton("Double"),
               ],
             )
           ],
         ),
       ),
+          ]
+        ),
+       ),
     );
   }
 }

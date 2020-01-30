@@ -148,7 +148,7 @@ class _LoginState extends State<Login> {
           ),
           ListTile(
             title: Text(
-              'Settings',
+              'Logout',
               style: TextStyle(
                   color: Colors.brown,
                   fontStyle: FontStyle.italic,
@@ -158,7 +158,10 @@ class _LoginState extends State<Login> {
               Icons.arrow_forward,
               color: Colors.brown,
             ),
-            onTap: () {},
+            onTap: () {
+               Navigator.push(
+                  context, MaterialPageRoute(builder: (context) => Login()));
+            },
           ),
         ]),
       ),

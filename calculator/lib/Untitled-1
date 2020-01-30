@@ -1,0 +1,77 @@
+btnclikced(String btntext) {
+    if (btntext == 'CLEAR') {
+      texttodisplay = "";
+      result = "";
+      setState(() {
+        texttodisplay = "";
+      });
+      Input1 = "";
+      Input2 = "";
+    } else if (btntext == "+" ||
+        btntext == "-" ||
+        btntext == "x" ||
+        btntext == "/") {
+      if (_radioValue == 'Int') {
+        Input1 = int.parse(result).toString();
+      } else {
+        Input2 = double.parse(result).toString();
+      }
+      // result = "";
+      operation = btntext;
+    } else if (btntext == ".") {
+      if (result.contains(".")) {
+        print("Already conatains a decimals");
+        return;
+      } else {
+        result = result + btntext;
+      }
+    } else if (btntext == "=") {
+      if (_radioValue == 'Int') {
+        Input2 = int.parse(result).toString();
+        if (operation == "+") {
+          result = (int.parse(Input1) + int.parse(Input2)).toString();
+        }
+        if (operation == "-") {
+          result = (int.parse(Input1) - int.parse(Input2)).toString();
+        }
+        if (operation == "x") {
+          result = (int.parse(Input1) * int.parse(Input2)).toString();
+        }
+        if (operation == "/") {
+          result = (int.parse(Input1) ~/ int.parse(Input2)).toString();
+        }
+        // Input1 = "";
+        Input2 = "";
+        operation = "";
+      } else {
+        Input1 = double.parse(result).toString();
+        if (operation == "+") {
+          result = (double.parse(Input1) + double.parse(Input2)).toString();
+        }
+        if (operation == "-") {
+          result = (double.parse(Input1) - double.parse(Input2)).toString();
+        }
+        if (operation == "x") {
+          result = (double.parse(Input1) * double.parse(Input2)).toString();
+        }
+        if (operation == "/") {
+          result = (double.parse(Input1) ~/ double.parse(Input2)).toString();
+        }
+        Input1 = "";
+        Input2 = "";
+        operation = "";
+      }
+    } 
+    else 
+    {
+      if (_radioValue == 'Int') {
+        result = result + btntext;
+      } else
+        result = result + btntext;
+    }
+    if (btntext != 'CLEAR') {
+      setState(() {
+        texttodisplay = texttodisplay + btntext;
+      });
+    }
+  }

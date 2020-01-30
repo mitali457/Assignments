@@ -106,10 +106,12 @@ class _CalculatorState extends State<Registration>
             onTap: () {},
           ),
         ]),
-      ),
+      ), 
       body: SingleChildScrollView(
         child: Center(
-         child: 
+              
+              
+                  child: 
          Column(mainAxisAlignment: MainAxisAlignment.start,
               children: <Widget>[
                 Row(mainAxisAlignment: MainAxisAlignment.center, children: <Widget>[
