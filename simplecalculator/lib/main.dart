@@ -26,8 +26,19 @@ class _SimpleCalculatorState extends State<SimpleCalculator> {
   String equation = "0";
   String result = "0";
   String expression = "";
+  String radioValue;
+   bool isButtonDisabled;
 
   buttonPressed(String buttonText) {
+    if(radioValue=='Int')
+    {
+      if(buttonText=='.'){
+       isButtonDisabled ? null: result;
+      }
+    //   setState(() {
+    //     result=int.parse(result).toString();
+    //   });
+     }
     setState(() {
       if (buttonText == "C") {
         equation = "0";
@@ -59,6 +70,14 @@ class _SimpleCalculatorState extends State<SimpleCalculator> {
         }
       }
     });
+    // if (_radioValue == 'Int') 
+    //    {
+    //      result= int.parse(result).toString();
+    //    } else 
+    //    {
+    //      result= double.parse(result).toString();
+    //    }
+    
   }
 
   Widget buildButton(
@@ -82,6 +101,12 @@ class _SimpleCalculatorState extends State<SimpleCalculator> {
           )),
     );
   }
+   void radioButtonChanges(String value) {
+    setState(() {
+      radioValue = value;
+    });
+  }
+  
 
   @override
   Widget build(BuildContext context) {
@@ -96,8 +121,8 @@ class _SimpleCalculatorState extends State<SimpleCalculator> {
               Image.network(
                 'https://www.thecalculatorsite.com/images/header/logo.png',
                 fit: BoxFit.contain,
-                width: 350,
-                height: 300,
+                width: 250,
+                height: 200,
               ),
             ],
           ),
@@ -129,6 +154,36 @@ class _SimpleCalculatorState extends State<SimpleCalculator> {
           Expanded(
             child: Divider(),
           ),
+          Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: <Widget>[
+                      Row(children: <Widget>[
+                        Radio(
+                          value: 'Int',
+                          groupValue: radioValue,
+                          onChanged: radioButtonChanges,
+                        ),
+                        Text(
+                          "Int",
+                          style: (TextStyle(
+                              fontSize: 20, fontWeight: FontWeight.bold)),
+                        ),
+                      ]),
+                      Row(
+                        children: <Widget>[
+                          Radio(
+                            value: 'Double',
+                            groupValue: radioValue,
+                            onChanged: radioButtonChanges,
+                          ),
+                          Text(
+                            "Double",
+                            style: (TextStyle(
+                                fontSize: 20, fontWeight: FontWeight.bold)),
+                          ),
+                        ],
+                      ),
+                    ]),
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[

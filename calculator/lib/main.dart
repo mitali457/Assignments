@@ -106,7 +106,7 @@ class _HomePageState extends State<HomePage> {
         });
       } else {
         Input2 =
-            ((double.parse(Input2) / 10) + double.parse(btntext)).toString();
+            ((double.parse(Input2) * 10) + double.parse(btntext)).toString();
         if (operation == "+") {
           result = (double.parse(Input1) + double.parse(Input2)).toString();
         }
