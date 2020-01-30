@@ -27,18 +27,14 @@ class _SimpleCalculatorState extends State<SimpleCalculator> {
   String result = "0";
   String expression = "";
   String radioValue;
-   bool isButtonDisabled;
+  bool isButtonDisabled;
 
   buttonPressed(String buttonText) {
-    if(radioValue=='Int')
-    {
-      if(buttonText=='.'){
-       isButtonDisabled ? null: result;
+    if (radioValue == 'Int') {
+      if (buttonText == '.') {
+        isButtonDisabled ? null : result;
       }
-    //   setState(() {
-    //     result=int.parse(result).toString();
-    //   });
-     }
+    }
     setState(() {
       if (buttonText == "C") {
         equation = "0";
@@ -70,14 +66,6 @@ class _SimpleCalculatorState extends State<SimpleCalculator> {
         }
       }
     });
-    // if (_radioValue == 'Int') 
-    //    {
-    //      result= int.parse(result).toString();
-    //    } else 
-    //    {
-    //      result= double.parse(result).toString();
-    //    }
-    
   }
 
   Widget buildButton(
@@ -101,12 +89,12 @@ class _SimpleCalculatorState extends State<SimpleCalculator> {
           )),
     );
   }
-   void radioButtonChanges(String value) {
+
+  void radioButtonChanges(String value) {
     setState(() {
       radioValue = value;
     });
   }
-  
 
   @override
   Widget build(BuildContext context) {
@@ -114,7 +102,6 @@ class _SimpleCalculatorState extends State<SimpleCalculator> {
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(150.0),
         child: AppBar(
-          
           flexibleSpace: Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
@@ -154,36 +141,34 @@ class _SimpleCalculatorState extends State<SimpleCalculator> {
           Expanded(
             child: Divider(),
           ),
-          Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: <Widget>[
-                      Row(children: <Widget>[
-                        Radio(
-                          value: 'Int',
-                          groupValue: radioValue,
-                          onChanged: radioButtonChanges,
-                        ),
-                        Text(
-                          "Int",
-                          style: (TextStyle(
-                              fontSize: 20, fontWeight: FontWeight.bold)),
-                        ),
-                      ]),
-                      Row(
-                        children: <Widget>[
-                          Radio(
-                            value: 'Double',
-                            groupValue: radioValue,
-                            onChanged: radioButtonChanges,
-                          ),
-                          Text(
-                            "Double",
-                            style: (TextStyle(
-                                fontSize: 20, fontWeight: FontWeight.bold)),
-                          ),
-                        ],
-                      ),
-                    ]),
+          Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: <
+              Widget>[
+            Row(children: <Widget>[
+              Radio(
+                value: 'Int',
+                groupValue: radioValue,
+                onChanged: radioButtonChanges,
+              ),
+              Text(
+                "Int",
+                style: (TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+              ),
+            ]),
+            Row(
+              children: <Widget>[
+                Radio(
+                  value: 'Double',
+                  groupValue: radioValue,
+                  onChanged: radioButtonChanges,
+                ),
+                Text(
+                  "Double",
+                  style: (TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+                ),
+              ],
+            ),
+          ]),
+          
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
@@ -222,7 +207,7 @@ class _SimpleCalculatorState extends State<SimpleCalculator> {
               ),
               Container(
                 width: 110,
-                // width: MediaQuery.of(context).size.width * 0.25,
+                
                 child: Table(
                   children: [
                     TableRow(children: [
