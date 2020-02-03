@@ -50,11 +50,11 @@ class _SimpleCalculatorState extends State<SimpleCalculator> {
         expression = expression.replaceAll('÷', '/');
 
         try {
-          Parser p = Parser();
-          Expression exp = p.parse(expression);
+          Parser perser = Parser();
+          Expression exp = perser.parse(expression);
 
-          ContextModel cm = ContextModel();
-          result = '${exp.evaluate(EvaluationType.REAL, cm)}';
+          ContextModel calculator = ContextModel();
+          result = '${exp.evaluate(EvaluationType.REAL, calculator)}';
         } catch (e) {
           result = "Error";
         }
@@ -168,7 +168,6 @@ class _SimpleCalculatorState extends State<SimpleCalculator> {
               ],
             ),
           ]),
-          
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[
@@ -207,7 +206,6 @@ class _SimpleCalculatorState extends State<SimpleCalculator> {
               ),
               Container(
                 width: 110,
-                
                 child: Table(
                   children: [
                     TableRow(children: [
