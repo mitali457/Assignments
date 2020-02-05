@@ -42,6 +42,8 @@ class _LoginState extends State<Login> {
           context: context,
           builder: (BuildContext context) {
             return AlertDialog(
+              backgroundColor: Colors.blue[200],
+          
               title: Text('Login'),
               content: Text("You Login successfully!!"),
             );
@@ -51,6 +53,7 @@ class _LoginState extends State<Login> {
           context: context,
           builder: (BuildContext context) {
             return AlertDialog(
+               backgroundColor: Colors.blue[200],
               title: Text('Login'),
               content: Text("You Put Wrong Password!! Please Register Your Account"),
               
@@ -58,9 +61,10 @@ class _LoginState extends State<Login> {
           });
     }
   }
-
+bool isload = false;
   @override
   Widget build(BuildContext context) {
+     
     return Scaffold(
         backgroundColor: Colors.white,
         appBar: AppBar(
@@ -165,7 +169,13 @@ class _LoginState extends State<Login> {
           ),
         ]),
       ),
-           body: SingleChildScrollView(
+           body:isload ? new Container(
+      color: Colors.grey[300],
+      width: 70.0,
+      height: 70.0,
+      
+      child: new Padding(padding: const EdgeInsets.all(5.0),child: new Center(child: new CircularProgressIndicator())),
+    ): SingleChildScrollView(
           child: Stack(
             children: <Widget>[
               Column(
@@ -247,10 +257,11 @@ class _LoginState extends State<Login> {
                         child: FlatButton(
                           onPressed: () {
                             message();
+                            Future.delayed(Duration(seconds: 5),(){
                             Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                    builder: (context) => HomeScreen()));
+                                    builder: (context) => HomeScreen()));});
                           },
                           child: Text(
                             'Login',
@@ -267,6 +278,9 @@ class _LoginState extends State<Login> {
                         ),
                         child: FlatButton(
                           onPressed: () {
+                            setState((){
+                          isload=true;
+                    });
                             message();
                             Navigator.push(
                                 context,
@@ -280,16 +294,19 @@ class _LoginState extends State<Login> {
                         ),
                       ),
                     ],
+                    
                   ),
                 ),
               ]),
             ),
           ]),
         ]
-        )
+        ),
+            
             ]
-            )
-           ),
+          ),
+           ),   
+          
         );
   }
 }
