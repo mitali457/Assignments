@@ -35,22 +35,23 @@ class _BlogPageState extends State<BlogPage> {
         child: Scaffold(
           backgroundColor: Colors.white,
           appBar: PreferredSize(
-            preferredSize: Size.fromHeight(230.0),
+            preferredSize: Size.fromHeight(80.0),
             child: AppBar(
               flexibleSpace: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.start,
                 children: [
-                  Image.network(
-                    'https://i.gifer.com/4Snl.gif',
-                    fit: BoxFit.contain,
-                    width: 170,
-                    height: 160,
+                  Container(
+                    width: 120,
+                    height: 120,
+                    decoration: BoxDecoration(
+                      image:DecorationImage(fit:BoxFit.cover,image:NetworkImage('https://show.chinadaily.com.cn/pub/view/af271047ca1e4c3288a5da4f364f0495'))
+                    ),
                   ),
                
                     Text("Write Your Blog!!",
                       style: TextStyle(
-                          color: Colors.black,
-                          fontWeight: FontWeight.bold,
+                          color: Colors.cyan,
+                          fontWeight: FontWeight.w500,
                           fontSize: 22)),
                  
                
@@ -72,18 +73,31 @@ class _BlogPageState extends State<BlogPage> {
                       children: <Widget>[
                         _image == null ?
                         Container(
-                          width: 220,
-                          height: 160,
-                          decoration: BoxDecoration(color: Colors.white),
-                          margin: EdgeInsets.all(10),
-                          child: Image.network(
-                              'https://helpx.adobe.com/content/dam/help/en/stock/how-to/visual-reverse-image-search/jcr_content/main-pars/image/visual-reverse-image-search-v2_intro.jpg'),
+                          width: 320,
+                          height: 200,
+                          decoration: BoxDecoration(color: Colors.white,
+                          borderRadius: BorderRadius.only(
+                            topLeft:Radius.circular(10),
+                            topRight:Radius.circular(40),
+                            bottomLeft:Radius.circular(40),
+                            bottomRight: Radius.circular(10),
+                          ),
+                          image: DecorationImage(image: NetworkImage('https://i.dlpng.com/static/png/6743854_preview.png',),fit: BoxFit.cover)
+                          ),
+                          margin: EdgeInsets.all(20),
+                          
+                              
                         ) :  Container(
-                          width: 120,
-                          height: 100,
-                          decoration: BoxDecoration(color: Colors.white),
-                          margin: EdgeInsets.all(10),
-                          child: Image.file(_image),
+                          width: 320,
+                          height: 200,
+                          decoration: BoxDecoration(image: DecorationImage(image: FileImage(_image),fit: BoxFit.cover), borderRadius: BorderRadius.only(
+                            topLeft:Radius.circular(10),
+                            topRight:Radius.circular(40),
+                            bottomLeft:Radius.circular(40),
+                            bottomRight: Radius.circular(10),
+                          ),),
+                          margin: EdgeInsets.all(20),
+                          
                         )
                       ]),
                       Row(
@@ -93,42 +107,33 @@ class _BlogPageState extends State<BlogPage> {
                onPressed: (){
                  getImage();
                },
-                color: Colors.teal,
-                child: Text('Take Photo'),
+color: Colors.cyan.withOpacity(0.5),
+                child: Text('Take photo',style: TextStyle(color:Colors.white),),
               ),
               RaisedButton(
               onPressed: (){
                 getImagegallery();
               },
-                color: Colors.purple[200],
-                child: Text('Upload'),
+                color: Colors.cyan.withOpacity(0.5),
+                child: Text('Upload',style: TextStyle(color:Colors.white),),
               ),
             ],
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Container(
-              
-                          width: 220,
-                          height: 100,
-                          decoration: BoxDecoration(color: Colors.white),
-                          margin: EdgeInsets.only(top:30),
-             child: Text('Write Something Here......')
-              ),
-            ]),
+         
+ Padding(padding: EdgeInsets.only(left:60,top:20),child: TextFormField(maxLines: 6,decoration:InputDecoration(border: InputBorder.none,hintText: 'Write something here')),
+            ),
             Row(
             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
             children: <Widget>[
               RaisedButton(
                onPressed: (){},
-                color: Colors.teal,
-                child: Text('Edit'),
+                color: Colors.cyan.withOpacity(0.5),
+                child: Text('Edit',style: TextStyle(color:Colors.white),),
               ),
               RaisedButton(
               onPressed: (){},
-                color: Colors.purple[200],
-                child: Text('Save'),
+                color: Colors.cyan.withOpacity(0.5),
+                child: Text('Save',style: TextStyle(color:Colors.white),),
               ),
             ],
           ),

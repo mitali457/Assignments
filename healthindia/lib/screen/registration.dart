@@ -3,6 +3,7 @@ import 'package:flutter/services.dart';
 import 'package:healthindia/screen/bmi.dart';
 import 'package:healthindia/screen/calorie.dart';
 import 'package:healthindia/screen/homescreen.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class Registration extends StatefulWidget {
   @override
@@ -157,7 +158,7 @@ class _CalculatorState extends State<Registration>
                             return null;
                           },
                         
-                          //inputFormatters: <TextInputFormatter>[WhitelistingTextInputFormatter(RegExp("[a-zA-Z]")),],
+                          inputFormatters: <TextInputFormatter>[WhitelistingTextInputFormatter(RegExp("[a-zA-Z]")),],
             
                               
                               ),

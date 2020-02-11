@@ -63,9 +63,9 @@ class ColorGameState extends State<ColorGame> {
               children: choices.keys.map((emoji) {
                 return Draggable<String>(
                   data: emoji,
-                  child: Emoji(emoji: score[emoji] == true ? '✅' : emoji),
+                  child: Emoji(emoji: score[emoji] == true ? ' 😍' : emoji),
                   feedback: Emoji(emoji: emoji),
-                  childWhenDragging: Emoji(emoji: '🌱'),
+                  childWhenDragging: Emoji(emoji: ' 🤪'),
                 );
               }).toList()),
           Column(

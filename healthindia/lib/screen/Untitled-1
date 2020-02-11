@@ -1,0 +1,62 @@
+ bool checkValue = false;
+   
+  SharedPreferences sharedPreferences;
+  @override
+  void initState() {
+    super.initState();
+    getCredential();
+  }
+_onChanged(bool value) async {
+  sharedPreferences = await SharedPreferences.getInstance();
+  setState(() {
+    checkValue = value;
+    sharedPreferences.setBool("check", checkValue);
+    sharedPreferences.setString("username", _nameFilter.text);
+    sharedPreferences.setString("password", _passwordFilter.text);
+    sharedPreferences.commit();
+    getCredential();
+  });
+}
+getCredential() async {
+  sharedPreferences = await SharedPreferences.getInstance();
+  setState(() {
+    checkValue = sharedPreferences.getBool("check");
+    if (checkValue != null) {
+      if (checkValue) {
+        _nameFilter.text = sharedPreferences.getString("username");
+        _passwordFilter.text = sharedPreferences.getString("password");
+      } else {
+        _nameFilter.text = "";
+        _passwordFilter.text = "";
+        sharedPreferences.clear();
+      }
+    } else {
+      checkValue = false;
+    }
+  });
+}
+_navigator() {
+    if (_nameFilter.text.length != 0 || _passwordFilter.text.length != 0) {
+      Navigator.of(context).pushAndRemoveUntil(
+          new MaterialPageRoute(
+              builder: (BuildContext context) => new HomeScreen()),
+          (Route<dynamic> route) => false);
+    } else {
+      showDialog(
+          context: context,
+          barrierDismissible: false,
+          child: new CupertinoAlertDialog(
+            content: new Text(
+              "username or password \ncan't be empty",
+              style: new TextStyle(fontSize: 16.0),
+            ),
+            actions: <Widget>[
+              new FlatButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  child: new Text("OK"))
+            ],
+          ));
+    }
+  }
