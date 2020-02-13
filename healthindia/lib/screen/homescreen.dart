@@ -17,7 +17,10 @@ class HomeScreen extends StatelessWidget {
       key: _scaffoldKey,
       backgroundColor: Colors.white,
       body: Container(
+        
         decoration: BoxDecoration(
+
+
           gradient: SweepGradient(colors: [
             Colors.white,
             Colors.green,
@@ -33,6 +36,8 @@ class HomeScreen extends StatelessWidget {
           ], startAngle: 0.5, endAngle: 1),
         ),
       ),
+      
+      
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(260.0),
         child: AppBar(
@@ -63,6 +68,8 @@ class HomeScreen extends StatelessWidget {
           brightness: Brightness.light,
         ),
       ),
+      
+      
       drawer: Drawer(
         child: ListView(padding: EdgeInsets.zero, children: <Widget>[
           UserAccountsDrawerHeader(
@@ -155,6 +162,7 @@ class HomeScreen extends StatelessWidget {
           ),
         ]),
       ),
+      
       
       bottomNavigationBar: BottomNavigationBar(
         backgroundColor: Colors.brown,

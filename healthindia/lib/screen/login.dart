@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:healthindia/screen/bmi.dart';
@@ -6,7 +5,6 @@ import 'package:healthindia/screen/calorie.dart';
 import 'package:healthindia/screen/homescreen.dart';
 import 'package:healthindia/screen/registration.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
 
 class Login extends StatefulWidget {
   @override
@@ -18,22 +16,73 @@ class _LoginState extends State<Login> {
   final TextEditingController _passwordFilter = new TextEditingController();
   String _name = "";
   String _password = "";
-  // bool isLogin=false;
-  // SharedPreferences sharedPreferences;
-  // @override
-  // void initState() async{
-  //   super.initState();
-  //   _checkLogin();
-  // } Future _checkLogin()async{
-  //    sharedPreferences = await SharedPreferences.getInstance();
-  //    if(sharedPreferences.getBool("isLogin"))
-  //    {
-  //     Navigator.push(context,
-  //      MaterialPageRoute(
-  //     builder: (context) =>  HomeScreen())); 
-  //    }
- 
-  // }
+  bool isLogin = false;
+
+  bool _obscureText = true;
+  bool checkValue = false;
+  SharedPreferences sharedPreferences;
+  @override
+  void initState() {
+    super.initState();
+    getCredential();
+  }
+
+  _onChanged(bool value) async {
+    sharedPreferences = await SharedPreferences.getInstance();
+    setState(() {
+      checkValue = value;
+      sharedPreferences.setBool("check", checkValue);
+      sharedPreferences.setString("username", _nameFilter.text);
+      sharedPreferences.setString("password", _passwordFilter.text);
+
+      getCredential();
+    });
+  }
+
+  getCredential() async {
+    sharedPreferences = await SharedPreferences.getInstance();
+    setState(() {
+      checkValue = sharedPreferences.getBool("check");
+      if (checkValue != null) {
+        if (checkValue) {
+          _nameFilter.text = sharedPreferences.getString("username");
+          _passwordFilter.text = sharedPreferences.getString("password");
+        } else {
+          _nameFilter.text = "";
+          _passwordFilter.text = "";
+          sharedPreferences.clear();
+        }
+      } else {
+        checkValue = false;
+      }
+    });
+  }
+
+  _navigator() {
+    if (_nameFilter.text.length != 0 || _passwordFilter.text.length != 0) {
+      Navigator.of(context).pushAndRemoveUntil(
+          new MaterialPageRoute(
+              builder: (BuildContext context) => new HomeScreen()),
+          (Route<dynamic> route) => false);
+    } else {
+      showDialog(
+          context: context,
+          barrierDismissible: false,
+          child: new AlertDialog(
+            content: new Text(
+              "username or password \ncan't be empty",
+              style: new TextStyle(fontSize: 16.0),
+            ),
+            actions: <Widget>[
+              new FlatButton(
+                  onPressed: () {
+                    Navigator.pop(context);
+                  },
+                  child: new Text("OK"))
+            ],
+          ));
+    }
+  }
 
   _LoginPageState() {
     _nameFilter.addListener;
@@ -58,10 +107,10 @@ class _LoginState extends State<Login> {
 
   void message() async {
     if (_name == _password)
-    // sharedPreferences = await SharedPreferences.getInstance();
-    // sharedPreferences.setBool("isLogin",true);
-    // sharedPreferences.setString("username", _nameFilter.text);
-    // sharedPreferences.setString("password", _passwordFilter.text); 
+      // sharedPreferences = await SharedPreferences.getInstance();
+      // sharedPreferences.setBool("isLogin",true);
+      // sharedPreferences.setString("username", _nameFilter.text);
+      // sharedPreferences.setString("password", _passwordFilter.text);
       showDialog(
           context: context,
           builder: (BuildContext context) {
@@ -79,32 +128,25 @@ class _LoginState extends State<Login> {
                 ],
               ),
             );
-          }
-          );
-  
-
-          
-    // else
-    //  {
-    //   sharedPreferences = await SharedPreferences.getInstance();
-    // sharedPreferences.setBool("isLogin",false);
-    //   showDialog(
-    //       context: context,
-    //       builder: (BuildContext context) {
-    //         return AlertDialog(
-    //           backgroundColor: Colors.white,
-    //           title: Text('Login'),
-    //           content:
-    //               Column(mainAxisSize: MainAxisSize.min, children: <Widget>[
-    //             CircularProgressIndicator(),
-    //             SizedBox(
-    //               height: 5,
-    //             ),
-    //             Text("You Put Wrong Password!! Please Register Your Account"),
-    //           ]),
-    //         );
-    //       });
-    // }
+          });
+    else {
+      showDialog(
+          context: context,
+          builder: (BuildContext context) {
+            return AlertDialog(
+              backgroundColor: Colors.white,
+              title: Text('Login'),
+              content:
+                  Column(mainAxisSize: MainAxisSize.min, children: <Widget>[
+                CircularProgressIndicator(),
+                SizedBox(
+                  height: 5,
+                ),
+                Text("You Put Wrong Password!! Please Register Your Account"),
+              ]),
+            );
+          });
+    }
   }
 
   bool isload = false;
@@ -113,38 +155,27 @@ class _LoginState extends State<Login> {
     return MaterialApp(
         home: SafeArea(
             child: Scaffold(
-               
-                backgroundColor: Colors.white,
-                appBar: PreferredSize(
-                  preferredSize: Size.fromHeight(260.0),
-                  child: AppBar(
-                    
-          
-          
-                 
-
-                    flexibleSpace: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [ 
-                        Container(
-                        width: 250,
-                        height: 200,
-                        margin: EdgeInsets.only(top: 30, bottom: 10),
-                        child: CircleAvatar(
-                        backgroundImage:
-                              AssetImage('assets/healthyindia.jpeg'),
-                        )
-                        ),
-                        
-                        
-                      ],
-                    ),
-                    elevation: 0.0,
-                    backgroundColor: Colors.white,
-                    brightness: Brightness.light,
-                  ),
-                ),
-    
+      backgroundColor: Colors.white,
+      appBar: PreferredSize(
+        preferredSize: Size.fromHeight(260.0),
+        child: AppBar(
+          flexibleSpace: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Container(
+                  width: 250,
+                  height: 200,
+                  margin: EdgeInsets.only(top: 30, bottom: 10),
+                  child: CircleAvatar(
+                    backgroundImage: AssetImage('assets/healthyindia.jpeg'),
+                  )),
+            ],
+          ),
+          elevation: 0.0,
+          backgroundColor: Colors.white,
+          brightness: Brightness.light,
+        ),
+      ),
       drawer: Drawer(
         child: ListView(padding: EdgeInsets.zero, children: <Widget>[
           UserAccountsDrawerHeader(
@@ -239,8 +270,9 @@ class _LoginState extends State<Login> {
       ),
       body: isload
           ? new Container(
-              color: Colors.grey[300],
-              width: 70.0,
+              alignment: Alignment.center,
+              color: Colors.white,
+              width: 470.0,
               height: 70.0,
               child: new Padding(
                   padding: const EdgeInsets.all(5.0),
@@ -250,7 +282,6 @@ class _LoginState extends State<Login> {
               child: Stack(children: <Widget>[
                 Column(mainAxisAlignment: MainAxisAlignment.start, children: <
                     Widget>[
-                  
                   Row(mainAxisAlignment: MainAxisAlignment.center, children: <
                       Widget>[
                     Container(
@@ -291,14 +322,23 @@ class _LoginState extends State<Login> {
                           padding:
                               EdgeInsets.only(top: 15, left: 15, right: 15),
                           child: TextField(
+                            obscureText: _obscureText,
                             onChanged: _passwordListen,
                             controller: _passwordFilter,
-                            obscureText: true,
+                            //obscureText: true,
                             decoration: InputDecoration(
-                              hintText: ' password',
-                              icon:
-                                  Icon(Icons.lock_outline, color: Colors.blue),
-                            ),
+                                hintText: ' password',
+                                icon: Icon(Icons.lock, color: Colors.blue),
+                                suffixIcon: new GestureDetector(
+                                  onTap: () {
+                                    setState(() {
+                                      _obscureText = !_obscureText;
+                                    });
+                                  },
+                                  child: new Icon(_obscureText
+                                      ? Icons.visibility
+                                      : Icons.visibility_off),
+                                )),
                           ),
                         ),
                         Padding(
@@ -317,13 +357,14 @@ class _LoginState extends State<Login> {
                                 child: FlatButton(
                                   onPressed: () {
                                     isload = true;
-                                    message();
+                                    //message();
+
                                     Future.delayed(Duration(seconds: 5), () {
                                       Navigator.push(
                                           context,
                                           MaterialPageRoute(
-                                              builder: (context) =>
-                                                  HomeScreen()));
+                                            builder: (context) => HomeScreen(),
+                                          ));
                                     });
                                   },
                                   child: Text(
@@ -364,8 +405,6 @@ class _LoginState extends State<Login> {
                 ]),
               ]),
             ),
-            )
-        )
-    );
+    )));
   }
 }

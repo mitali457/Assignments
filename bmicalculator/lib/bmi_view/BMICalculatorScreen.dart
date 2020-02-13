@@ -20,7 +20,8 @@ class _BMICalculatorScreenState extends State<BMICalculatorScreen> {
   double _kbmi = 0;
 
   BMIModel _kbmiModel;
-  TextfieldinBmi _ktextfieldinbmi;
+  //Textfieldbmi ktextstyle;
+  
 
   @override
   Widget build(BuildContext context) {
@@ -43,7 +44,7 @@ class _BMICalculatorScreenState extends State<BMICalculatorScreen> {
               SizedBox(
                 height: 28,
               ),
-              Text("BMI Calculator", style: TextStyle(color: Colors.deepPurple, fontSize: 44, fontWeight: FontWeight.w900),),
+              Text("BMI Calculator", style: TextStyle(color: ColorTheme.primary, fontSize: 44, fontWeight: FontWeight.w900),),
               
               Text("We care about your health 😊", style: TextStyle(color: Colors.purple, fontSize: 20, fontWeight: FontWeight.bold),),
               SizedBox(
@@ -69,7 +70,7 @@ class _BMICalculatorScreenState extends State<BMICalculatorScreen> {
                 ),
               ),
 
-              Text("$_kheightOfUser cm", style: TextStyle(color: Colors.deepPurple, fontSize: 18, fontWeight: FontWeight.w900),),
+              Text("$_kheightOfUser cm", style: TextStyle(color: ColorTheme.primary, fontSize: 18, fontWeight: FontWeight.w900),),
 
               SizedBox(height: 24,),
 
@@ -99,7 +100,8 @@ class _BMICalculatorScreenState extends State<BMICalculatorScreen> {
               Container(
                 child: FlatButton.icon(
                     onPressed: (){
-                      setState(() {
+
+                      // setState(() {
                         _kbmi=_kweightOfUser / pow(_kheightOfUser / 100, 2);
                         
                         if(_kbmi >= 18.5 && _kbmi <= 25){
@@ -111,7 +113,7 @@ class _BMICalculatorScreenState extends State<BMICalculatorScreen> {
                         }else{
                           _kbmiModel = BMIModel(bmi: _kbmi, isNormal: false, comments: "You are Obesed");
                         }
-                      });
+                    //  });
 
                       Navigator.push(context, MaterialPageRoute(
                         builder: (context) => ResultScreen(bmiModel: _kbmiModel,)
