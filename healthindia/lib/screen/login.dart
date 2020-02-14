@@ -24,39 +24,12 @@ class _LoginState extends State<Login> {
   @override
   void initState() {
     super.initState();
-    getCredential();
+    setData();
   }
 
-  _onChanged(bool value) async {
-    sharedPreferences = await SharedPreferences.getInstance();
-    setState(() {
-      checkValue = value;
-      sharedPreferences.setBool("check", checkValue);
-      sharedPreferences.setString("username", _nameFilter.text);
-      sharedPreferences.setString("password", _passwordFilter.text);
+  
 
-      getCredential();
-    });
-  }
-
-  getCredential() async {
-    sharedPreferences = await SharedPreferences.getInstance();
-    setState(() {
-      checkValue = sharedPreferences.getBool("check");
-      if (checkValue != null) {
-        if (checkValue) {
-          _nameFilter.text = sharedPreferences.getString("username");
-          _passwordFilter.text = sharedPreferences.getString("password");
-        } else {
-          _nameFilter.text = "";
-          _passwordFilter.text = "";
-          sharedPreferences.clear();
-        }
-      } else {
-        checkValue = false;
-      }
-    });
-  }
+  
 
   _navigator() {
     if (_nameFilter.text.length != 0 || _passwordFilter.text.length != 0) {
@@ -341,6 +314,12 @@ class _LoginState extends State<Login> {
                                 )),
                           ),
                         ),
+                         new CheckboxListTile(
+            value: checkValue,
+            onChanged: _onChanged,
+            title: new Text("Remember me"),
+            controlAffinity: ListTileControlAffinity.leading,
+          ),
                         Padding(
                           padding:
                               EdgeInsets.only(top: 30, left: 10, right: 10),
@@ -357,20 +336,24 @@ class _LoginState extends State<Login> {
                                 child: FlatButton(
                                   onPressed: () {
                                     isload = true;
-                                    //message();
+                                    message();
 
                                     Future.delayed(Duration(seconds: 5), () {
                                       Navigator.push(
                                           context,
                                           MaterialPageRoute(
-                                            builder: (context) => HomeScreen(),
+                                            builder: (context) => HomeScreen(name: _nameFilter.text),
                                           ));
                                     });
                                   },
-                                  child: Text(
+                                 
+                                child: Text(
                                     'Login',
                                     style: TextStyle(color: Colors.white),
+                                   
                                   ),
+                                 //onTap: _navigator,
+                                  
                                 ),
                               ),
                               Container(
@@ -394,6 +377,7 @@ class _LoginState extends State<Login> {
                                     'Register Your Account',
                                     style: TextStyle(color: Colors.white),
                                   ),
+                                   
                                 ),
                               ),
                             ],
@@ -407,4 +391,59 @@ class _LoginState extends State<Login> {
             ),
     )));
   }
+
+_onChanged(bool value) async {
+    sharedPreferences = await SharedPreferences.getInstance();
+    setState(() {
+      checkValue = value;
+      sharedPreferences.setBool("check", checkValue);
+      sharedPreferences.setString("username", _nameFilter.text);
+      sharedPreferences.setString("password", _passwordFilter.text);
+
+      setData();
+    });
+  }
+  setData() async {
+    sharedPreferences = await SharedPreferences.getInstance();
+    setState(() {
+      checkValue = sharedPreferences.getBool("check");
+      if (checkValue != null) {
+        if (checkValue) {
+          _nameFilter.text = sharedPreferences.getString("username");
+          _passwordFilter.text = sharedPreferences.getString("password");
+        } else {
+          _nameFilter.text = "";
+          _passwordFilter.text = "";
+          sharedPreferences.clear();
+        }
+      } else {
+        checkValue = false;
+      }
+    });
+  }
+  // _Navigator() {
+  //   if ( _nameFilter.text.length != 0 || _passwordFilter.text.length != 0) {
+  //     Navigator.of(context).pushAndRemoveUntil(
+  //         new MaterialPageRoute(
+  //             builder: (BuildContext context) => new HomeScreen(name: _nameFilter.text)),
+  //         (Route<dynamic> route) => false);
+  //   } else {
+  //     showDialog(
+  //         context: context,
+  //         barrierDismissible: false,
+  //         child: AlertDialog(
+  //           content: new Text(
+  //             "username or password \ncan't be empty",
+  //             style: new TextStyle(fontSize: 16.0),
+  //           ),
+  //           actions: <Widget>[
+  //             new FlatButton(
+  //                 onPressed: () {
+  //                   Navigator.pop(context);
+  //                 },
+  //                 child: new Text("OK"))
+  //           ],
+  //         ));
+  //   }
+  // }
 }

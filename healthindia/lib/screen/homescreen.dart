@@ -10,32 +10,34 @@ import '../Moodtrack.dart';
 
 class HomeScreen extends StatelessWidget {
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
-
+  final String name;
+HomeScreen({Key key, @required this.name}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      
       key: _scaffoldKey,
       backgroundColor: Colors.white,
-      body: Container(
+      // body: Container(
         
-        decoration: BoxDecoration(
+      //   decoration: BoxDecoration(
 
 
-          gradient: SweepGradient(colors: [
-            Colors.white,
-            Colors.green,
-            Colors.orange,
-            Colors.red,
-            Colors.white
-          ], stops: [
-            0.0,
-            0.25,
-            0.5,
-            0.75,
-            1
-          ], startAngle: 0.5, endAngle: 1),
-        ),
-      ),
+      //     gradient: SweepGradient(colors: [
+      //       Colors.white,
+      //       Colors.green,
+      //       Colors.orange,
+      //       Colors.red,
+      //       Colors.white
+      //     ], stops: [
+      //       0.0,
+      //       0.25,
+      //       0.5,
+      //       0.75,
+      //       1
+      //     ], startAngle: 0.5, endAngle: 1),
+      //   ),
+      // ),
       
       
       appBar: PreferredSize(
@@ -66,6 +68,13 @@ class HomeScreen extends StatelessWidget {
           elevation: 0.0,
           backgroundColor: Colors.white,
           brightness: Brightness.light,
+        ),
+      ),
+       body:new Container(
+        alignment: Alignment.center,
+        child: new Text(
+          "Welcome to $name!!",
+          style: new TextStyle(color:Colors.indigo,fontSize: 26.0, fontWeight: FontWeight.bold),
         ),
       ),
       
@@ -179,6 +188,7 @@ class HomeScreen extends StatelessWidget {
               icon: Icon(Icons.person), title: Text('Diet Plan'))
         ],
       ),
+    
       
     );
   }
