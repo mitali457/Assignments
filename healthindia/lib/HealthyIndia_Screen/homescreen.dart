@@ -1,27 +1,20 @@
 import 'package:flutter/material.dart';
-import 'package:healthindia/screen/login.dart';
-import 'package:healthindia/screen/registration.dart';
-import 'package:healthindia/screen/calorie.dart';
+import 'package:healthindia/HealthyIndia_Screen/calorie.dart';
 
-import 'package:healthindia/screen/bmi.dart';
-
-import '../Moodtrack.dart';
-//import 'login.dart';
+import 'package:healthindia/HealthyIndia_Screen/bmi.dart';
 
 class HomeScreen extends StatelessWidget {
   final GlobalKey<ScaffoldState> _scaffoldKey = new GlobalKey<ScaffoldState>();
   final String name;
-HomeScreen({Key key, @required this.name}) : super(key: key);
+  HomeScreen({Key key, @required this.name}) : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      
       key: _scaffoldKey,
       backgroundColor: Colors.white,
       // body: Container(
-        
-      //   decoration: BoxDecoration(
 
+      //   decoration: BoxDecoration(
 
       //     gradient: SweepGradient(colors: [
       //       Colors.white,
@@ -38,8 +31,7 @@ HomeScreen({Key key, @required this.name}) : super(key: key);
       //     ], startAngle: 0.5, endAngle: 1),
       //   ),
       // ),
-      
-      
+
       appBar: PreferredSize(
         preferredSize: Size.fromHeight(260.0),
         child: AppBar(
@@ -70,15 +62,17 @@ HomeScreen({Key key, @required this.name}) : super(key: key);
           brightness: Brightness.light,
         ),
       ),
-       body:new Container(
+      body: new Container(
         alignment: Alignment.center,
         child: new Text(
           "Welcome to $name!!",
-          style: new TextStyle(color:Colors.indigo,fontSize: 26.0, fontWeight: FontWeight.bold),
+          style: new TextStyle(
+              color: Colors.indigo,
+              fontSize: 26.0,
+              fontWeight: FontWeight.bold),
         ),
       ),
-      
-      
+
       drawer: Drawer(
         child: ListView(padding: EdgeInsets.zero, children: <Widget>[
           UserAccountsDrawerHeader(
@@ -120,8 +114,8 @@ HomeScreen({Key key, @required this.name}) : super(key: key);
             ),
             trailing: Icon(Icons.arrow_forward, color: Colors.brown),
             onTap: () {
-              Navigator.push(
-                  context, MaterialPageRoute(builder: (context) => HomeScreen()));
+              Navigator.push(context,
+                  MaterialPageRoute(builder: (context) => HomeScreen()));
             },
           ),
           ListTile(
@@ -159,20 +153,19 @@ HomeScreen({Key key, @required this.name}) : super(key: key);
                   color: Colors.brown,
                   fontStyle: FontStyle.italic,
                   fontSize: 20),
-            ),
+            ), 
             trailing: Icon(
               Icons.arrow_forward,
               color: Colors.brown,
             ),
             onTap: () {
-              Navigator.push(
-                  context, MaterialPageRoute(builder: (context) => Login()));
+              Navigator.of(context).pushNamedAndRemoveUntil(
+                  '/login', (Route<dynamic> route) => false);
             },
           ),
         ]),
       ),
-      
-      
+
       bottomNavigationBar: BottomNavigationBar(
         backgroundColor: Colors.brown,
         items: [
@@ -188,8 +181,6 @@ HomeScreen({Key key, @required this.name}) : super(key: key);
               icon: Icon(Icons.person), title: Text('Diet Plan'))
         ],
       ),
-    
-      
     );
   }
 }

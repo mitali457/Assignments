@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:healthindia/screen/bmi.dart';
-import 'package:healthindia/screen/calorie.dart';
-import 'package:healthindia/screen/homescreen.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:healthindia/HealthyIndia_Screen/bmi.dart';
+import 'package:healthindia/HealthyIndia_Screen/calorie.dart';
+import 'package:healthindia/HealthyIndia_Screen/homescreen.dart';
 
 class Registration extends StatefulWidget {
   @override
@@ -17,6 +16,7 @@ class _CalculatorState extends State<Registration>
   Widget build(BuildContext context) {
     return  Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.blue,
         title: Text("Registration For Healthy India"),
       ),
       drawer: Drawer(

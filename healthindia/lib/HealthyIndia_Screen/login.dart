@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:healthindia/screen/bmi.dart';
-import 'package:healthindia/screen/calorie.dart';
-import 'package:healthindia/screen/homescreen.dart';
-import 'package:healthindia/screen/registration.dart';
+import 'package:healthindia/HealthyIndia_Screen/bmi.dart';
+import 'package:healthindia/HealthyIndia_Screen/calorie.dart';
+import 'package:healthindia/HealthyIndia_Screen/homescreen.dart';
+import 'package:healthindia/HealthyIndia_Screen/registration.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class Login extends StatefulWidget {
@@ -27,15 +27,11 @@ class _LoginState extends State<Login> {
     setData();
   }
 
-  
-
-  
-
   _navigator() {
     if (_nameFilter.text.length != 0 || _passwordFilter.text.length != 0) {
       Navigator.of(context).pushAndRemoveUntil(
           new MaterialPageRoute(
-              builder: (BuildContext context) => new HomeScreen()),
+              builder: (BuildContext context) => new HomeScreen(name: _nameFilter.text)),
           (Route<dynamic> route) => false);
     } else {
       showDialog(
@@ -80,10 +76,6 @@ class _LoginState extends State<Login> {
 
   void message() async {
     if (_name == _password)
-      // sharedPreferences = await SharedPreferences.getInstance();
-      // sharedPreferences.setBool("isLogin",true);
-      // sharedPreferences.setString("username", _nameFilter.text);
-      // sharedPreferences.setString("password", _passwordFilter.text);
       showDialog(
           context: context,
           builder: (BuildContext context) {
@@ -191,7 +183,7 @@ class _LoginState extends State<Login> {
             trailing: Icon(Icons.arrow_forward, color: Colors.brown),
             onTap: () {
               Navigator.push(context,
-                  MaterialPageRoute(builder: (context) => HomeScreen()));
+                  MaterialPageRoute(builder: (context) => HomeScreen(name: _nameFilter.text,)));
             },
           ),
           ListTile(
@@ -298,7 +290,6 @@ class _LoginState extends State<Login> {
                             obscureText: _obscureText,
                             onChanged: _passwordListen,
                             controller: _passwordFilter,
-                            //obscureText: true,
                             decoration: InputDecoration(
                                 hintText: ' password',
                                 icon: Icon(Icons.lock, color: Colors.blue),
@@ -314,12 +305,12 @@ class _LoginState extends State<Login> {
                                 )),
                           ),
                         ),
-                         new CheckboxListTile(
-            value: checkValue,
-            onChanged: _onChanged,
-            title: new Text("Remember me"),
-            controlAffinity: ListTileControlAffinity.leading,
-          ),
+                        new CheckboxListTile(
+                          value: checkValue,
+                          onChanged: _onChanged,
+                          title: new Text("Remember me"),
+                          controlAffinity: ListTileControlAffinity.leading,
+                        ),
                         Padding(
                           padding:
                               EdgeInsets.only(top: 30, left: 10, right: 10),
@@ -342,18 +333,15 @@ class _LoginState extends State<Login> {
                                       Navigator.push(
                                           context,
                                           MaterialPageRoute(
-                                            builder: (context) => HomeScreen(name: _nameFilter.text),
+                                            builder: (context) => HomeScreen(
+                                                name: _nameFilter.text),
                                           ));
                                     });
                                   },
-                                 
-                                child: Text(
+                                  child: Text(
                                     'Login',
                                     style: TextStyle(color: Colors.white),
-                                   
                                   ),
-                                 //onTap: _navigator,
-                                  
                                 ),
                               ),
                               Container(
@@ -377,7 +365,6 @@ class _LoginState extends State<Login> {
                                     'Register Your Account',
                                     style: TextStyle(color: Colors.white),
                                   ),
-                                   
                                 ),
                               ),
                             ],
@@ -392,7 +379,7 @@ class _LoginState extends State<Login> {
     )));
   }
 
-_onChanged(bool value) async {
+  _onChanged(bool value) async {
     sharedPreferences = await SharedPreferences.getInstance();
     setState(() {
       checkValue = value;
@@ -403,6 +390,7 @@ _onChanged(bool value) async {
       setData();
     });
   }
+
   setData() async {
     sharedPreferences = await SharedPreferences.getInstance();
     setState(() {

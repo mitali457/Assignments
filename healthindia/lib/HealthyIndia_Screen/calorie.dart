@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:healthindia/screen/bmi.dart';
-import 'package:healthindia/screen/homescreen.dart';
-import 'package:healthindia/screen/login.dart';
+import 'package:healthindia/HealthyIndia_Screen/bmi.dart';
+import 'package:healthindia/HealthyIndia_Screen/homescreen.dart';
+import 'package:healthindia/HealthyIndia_Screen/login.dart';
 
 class Calorie extends StatefulWidget {
   @override

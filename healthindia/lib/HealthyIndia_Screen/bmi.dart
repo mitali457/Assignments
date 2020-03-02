@@ -1,9 +1,9 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:healthindia/screen/calorie.dart';
-import 'package:healthindia/screen/homescreen.dart';
-import 'package:healthindia/screen/login.dart';
+import 'package:healthindia/HealthyIndia_Screen/calorie.dart';
+import 'package:healthindia/HealthyIndia_Screen/homescreen.dart';
+import 'package:healthindia/HealthyIndia_Screen/login.dart';
 
 class Bmical extends StatefulWidget {
   @override
