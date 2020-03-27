@@ -141,8 +141,8 @@ class _SimpleCalculatorState extends State<SimpleCalculator> {
           Expanded(
             child: Divider(),
           ),
-          Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, children: <
-              Widget>[
+          Row(mainAxisAlignment: MainAxisAlignment.spaceEvenly, 
+          children: <Widget>[
             Row(children: <Widget>[
               Radio(
                 value: 'Int',
