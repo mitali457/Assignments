@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:monthlykharcha/Animation/animation.dart';
 import 'package:monthlykharcha/components/curvedshape.dart';
 import 'package:monthlykharcha/model/productmodel.dart';
-import 'package:monthlykharcha/screen/Animation/animation.dart';
+
 
 import 'package:monthlykharcha/screen/details.dart';
 
