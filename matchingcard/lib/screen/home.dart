@@ -72,10 +72,10 @@ class _MyHomePageState extends State<MyHomePage> {
              SizedBox(
                 height: 60,
               ),
-               points != 40 ? Column(
+               scores != 40 ? Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
                 children: <Widget>[
-          Text('Your Points- $points Need to score 40',
+          Text('Your Points- $scores Need to score 40',
              style: TextStyle(
                                 color: Colors.black,
                                 fontSize: 20.0,
@@ -100,7 +100,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 height: 20,
               ),
         
-           points != 40 ? GridView(
+           scores != 40 ? GridView(
                 shrinkWrap: true,
                 
                 scrollDirection: Axis.vertical,
@@ -124,7 +124,7 @@ class _MyHomePageState extends State<MyHomePage> {
                               )
                     ),
                     SizedBox(height: 20,),
-                    Text("Your Score : $points/40",
+                    Text("Your Score : $scores/40",
                     style: TextStyle(
                                 color: Colors.black,
                                 fontSize: 20.0,
@@ -135,10 +135,9 @@ class _MyHomePageState extends State<MyHomePage> {
 
                     GestureDetector(
                       onTap: (){
-                        setState(() {
-                          points = 0;
-                          reStart();
-                        });
+                        scores = 0;
+                        reStart();
+                        
                       },
                       
                       child: Container(
@@ -186,6 +185,7 @@ class _TileState extends State<Tile> {
     return GestureDetector(
       onTap: () {
         if (!selected) {
+          
           setState(() {
             mycardPairs[widget.tileIndex].setIsSelected(true);
           });
@@ -193,7 +193,7 @@ class _TileState extends State<Tile> {
             /// testing if the selected cards are same
             if (selectedTile == mycardPairs[widget.tileIndex].getImageAssetPath()) {
               
-              points = points + 10;
+              scores = scores + 10;
              
 
               CardModel cardModel =  CardModel();
@@ -204,6 +204,7 @@ class _TileState extends State<Tile> {
                 mycardPairs[widget.tileIndex] =  cardModel;
                 print(selectedIndex);
                 mycardPairs[selectedIndex] =  cardModel;
+                
                 this.widget.parent.setState(() {});
                 setState(() {
                   selected = false;

@@ -3,7 +3,7 @@ import 'package:matchingcard/models/model.dart';
 String selectedTile = "";
 int selectedIndex ;
 bool selected = true;
-int points = 0;
+int scores = 0;
 
 List<CardModel> mycardPairs =  List<CardModel>();
 List<bool> clicked =  List<bool>();
