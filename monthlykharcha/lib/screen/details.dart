@@ -125,6 +125,7 @@ class _DetailsState extends State<Details> {
                                   else return SizedBox();
                                 }),
                           ),
+                          
                           SizedBox(
                             height: 20,
                           ),
