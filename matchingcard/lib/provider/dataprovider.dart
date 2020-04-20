@@ -26,28 +26,28 @@ List<CardModel>  getPairs(){
 
   CardModel cardModel =  CardModel();
 
-  //1
+  
   cardModel.setImageAssetPath("assets/card1.png");
   cardModel.setIsSelected(false);
   pairs.add(cardModel);
   pairs.add(cardModel);
   cardModel =  CardModel();
 
-  //2
+ 
   cardModel.setImageAssetPath("assets/card2.png");
   cardModel.setIsSelected(false);
   pairs.add(cardModel);
   pairs.add(cardModel);
   cardModel =  CardModel();
 
-  //3
+
   cardModel.setImageAssetPath("assets/card3.png");
   cardModel.setIsSelected(false);
   pairs.add(cardModel);
   pairs.add(cardModel);
   cardModel =  CardModel();
 
-  //4
+
   cardModel.setImageAssetPath("assets/card4.png");
   cardModel.setIsSelected(false);
   pairs.add(cardModel);
@@ -63,28 +63,28 @@ List<CardModel>  getQuestionPairs(){
 
   CardModel cardModel =  CardModel();
 
-  //1
+
   cardModel.setImageAssetPath("assets/question.png");
   cardModel.setIsSelected(false);
   pairs.add(cardModel);
   pairs.add(cardModel);
   cardModel =  CardModel();
 
-  //2
+
   cardModel.setImageAssetPath("assets/question.png");
   cardModel.setIsSelected(false);
   pairs.add(cardModel);
   pairs.add(cardModel);
   cardModel =  CardModel();
 
-  //3
+
   cardModel.setImageAssetPath("assets/question.png");
   cardModel.setIsSelected(false);
   pairs.add(cardModel);
   pairs.add(cardModel);
   cardModel =  CardModel();
 
-  //4
+
   cardModel.setImageAssetPath("assets/question.png");
   cardModel.setIsSelected(false);
   pairs.add(cardModel);
