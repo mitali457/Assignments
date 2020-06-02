@@ -30,16 +30,19 @@ class _BMICalculatorScreenState extends State<BMICalculatorScreen> {
       body: SingleChildScrollView(
         child: Container(
           width: double.infinity,
-          padding: EdgeInsets.all(32),
+          padding: EdgeInsets.only(top:50),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: <Widget>[
-              Container(
-                height: 200,
-                width: 200,
-                child:Image.network(
+              Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Container(
+                  height: 200,
+                  width: 500,
+                  child:Image.network(
   'https://is3-ssl.mzstatic.com/image/thumb/Purple128/v4/09/31/44/09314459-9f77-2e1b-89f0-c595490074ee/AppIcon-1x_U007emarketing-85-220-6.png/320x0w.png',
 )
+                ),
               ),
               SizedBox(
                 height: 28,
@@ -99,6 +102,9 @@ class _BMICalculatorScreenState extends State<BMICalculatorScreen> {
 
               Container(
                 child: FlatButton.icon(
+                  shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(20.0),
+                            ),
                     onPressed: (){
 
                       // setState(() {

@@ -1,23 +1,22 @@
-class CardModel{
-
+class CardModel {
   String imageAssetPath;
   bool isSelected;
 
   CardModel({this.imageAssetPath, this.isSelected});
 
-  void setImageAssetPath(String getImageAssetPath){
+  void setImageAssetPath(String getImageAssetPath) {
     imageAssetPath = getImageAssetPath;
   }
 
-  String getImageAssetPath(){
+  String getImageAssetPath() {
     return imageAssetPath;
   }
 
-  void setIsSelected(bool getIsSelected){
+  void setIsSelected(bool getIsSelected) {
     isSelected = getIsSelected;
   }
 
-  bool getIsSelected(){
+  bool getIsSelected() {
     return isSelected;
   }
 }

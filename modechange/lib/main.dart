@@ -86,7 +86,7 @@ class MyHomepagestate extends State<MyHomepage> {
                           isSelected[buttonIndex] = false;
                           day = day;
                           dayappbg = Colors.yellow[800];
-                          dayimage = AssetImage('assets/day.png');
+                          dayimage = AssetImage('assets/sun.png');
                           daybg = Colors.yellow[700];
                           daystate = daystate;
                  

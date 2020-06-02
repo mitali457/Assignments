@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 
 
@@ -22,12 +23,13 @@ class ResultScreen extends StatelessWidget {
         padding: EdgeInsets.all(32),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
+          //mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
 
             Container(
               height: 100,
               width: 200,
+              child: bmiModel.isNormal ? SvgPicture.asset("assets/happy.svg", fit: BoxFit.contain,) : SvgPicture.asset("assets/sad.svg", fit: BoxFit.contain,) ,
             ),
 
             SizedBox(
@@ -46,6 +48,9 @@ class ResultScreen extends StatelessWidget {
 
             Container(
               child: FlatButton.icon(
+                shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(20.0),
+                            ),
                 onPressed: (){
 
                   Navigator.pop(context);
